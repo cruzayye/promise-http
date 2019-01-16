@@ -10,7 +10,7 @@ module.exports = (req, res) => {
   if(req.method === 'POST' && url.pathname === '/note') {
       bodyParser(req)
         .then(body => {
-          notes[notId++] = body;
+          notes[noteId++] = body;
           res.statusCode = 204;
           res.end();
         })
