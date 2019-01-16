@@ -1,4 +1,7 @@
-const { getCharacter } = require('../lib/rickMorty');
+const { 
+  getCharacter,
+  getCharacters 
+} = require('../lib/rickMorty');
 
 describe('service', () => {
   it('gets character', ()=> {
@@ -8,7 +11,14 @@ describe('service', () => {
           name: 'Rick Sanchez',
           status: 'Alive',
           species: 'Human'
-        })
+        });
+      });
+  });
+
+  it('gets a list of characters', ()=> {
+    return getCharacters()
+      .then(characters => {
+        expect(characters).toHaveLength(20);
       })
   })
 });

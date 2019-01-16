@@ -1,7 +1,7 @@
 const http = require('http');
 const { parse } = require('url');
 const app = require('./lib/app');
-
+// **NOTE TO SELF: 
 http.createServer(app)
   .listen(7890);
 

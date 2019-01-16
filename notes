@@ -1,10 +1,13 @@
 
 ***this function get called everytime someone req our server. 
+//this function gets called everytime someone visits our site. 
 http.createServer((req, res)=> {
 
 })
 
 1.REQ
+-extends an event emitter.
+-a read stream
 the req part of the function can include:
   -post
   -get
@@ -12,11 +15,14 @@ the req part of the function can include:
   -put
   -option
   -delete (aka CRUD)
-cons url = par(req.url) will spit out the object of url which include 
-  procol = http
+cons url = parse(req.url) will split out the object of url which include 
+ {
+   protocol : http
+ } 
 
 
-  2.res stands for response 
+  2.RESstands for response 
+  -write stream
   exeamples include
          res.body(JSON.stringify({testing: 123 }));
 
@@ -88,3 +94,24 @@ module.exports = req => {
 bodyParser(req)
   .then(body => {})
   .catch(err=>{})
+
+
+///////NOTE EXERCISE 
+const = notes {}
+http.createServer(req, res)
+  if(req.method === 'POST' && req.url ==='/notes){
+    bodyParser(req)
+      .then(body == )
+        const id = shortid.generate
+        notes[id] = {...body, id}
+        res.end(JSON.stringify())
+  }
+
+
+///http info is a packet of information 
+  -header knowshwo to parse the information. 
+  request.url
+  request.method
+
+  get the header for the request 
+  set the header for the response. 
