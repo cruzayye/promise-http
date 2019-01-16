@@ -12,7 +12,7 @@ const getCharacter = id => {
 
 const getCharacters = () => {
   return request
-    .get(`https://rickandmortyapi.com/api/character`)
+    .get('https://rickandmortyapi.com/api/character')
     .then(res => {
       return res.body.results.map(ele => ({
         name: ele.name,
@@ -22,7 +22,7 @@ const getCharacters = () => {
 
     });
 
-}
+};
 
 module.exports = { 
   getCharacter, 

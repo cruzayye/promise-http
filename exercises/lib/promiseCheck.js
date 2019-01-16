@@ -1,6 +1,6 @@
 
-module.exports = toCheck => {
-  return topeOf toCheck === 'object' &&
+// module.exports = toCheck => {
+//   return topeOf toCheck === 'object' &&
     
-}
+// }
 

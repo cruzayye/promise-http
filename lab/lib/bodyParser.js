@@ -9,25 +9,25 @@ module.exports = req => {
     }
     const headers = req.headers || req.getHeaders();
     if(headers['content-type'] !== 'application/json') {
-      return reject('we only support JSON')
+      return reject('we only support JSON');
     }
     let body = '';
     req.on('data', (chunk) => {
-        body += chunk;
-    })
+      body += chunk;
+    });
     req.on('end', () => {
       //has to be null because user can send us an data so we have to parse it.
       let json = null;
-      try{
+      try {
         json = JSON.parse(body);
       } catch(e){
         //this stops it from going to resolve.
         return reject(e);
       }
-      resolve(json)
-    })
+      resolve(json);
+    });
     req.on('error', err => {
-        reject(err);
+      reject(err);
     });
   });
 };
