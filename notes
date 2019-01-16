@@ -1,0 +1,90 @@
+
+***this function get called everytime someone req our server. 
+http.createServer((req, res)=> {
+
+})
+
+1.REQ
+the req part of the function can include:
+  -post
+  -get
+  -patch
+  -put
+  -option
+  -delete (aka CRUD)
+cons url = par(req.url) will spit out the object of url which include 
+  procol = http
+
+
+  2.res stands for response 
+  exeamples include
+         res.body(JSON.stringify({testing: 123 }));
+
+         //this gets sent bak to the browser
+          res.end(JSON.stringify({ hi: `there$
+
+          res.setHeader
+
+          res.statusCode = 400, 200
+
+
+  
+
+  /blog?name=ryan&hi=there
+  const url = parse(req.url,true) //by adding true thsi will = {
+    name: 'ryan',
+    hi: 'there
+  }
+  without having true on line 34
+  url.query//name=ryan&hi=there
+
+
+
+
+  *********HOw to read data that gets sent to us
+  let body = ''
+  req.on('data', chunk => {
+      body += chunk
+
+    
+  })
+  req.on('end', ()=> {
+    const json = JSON.parse(body)
+  })
+
+  {
+    name: 'ryan'
+  }
+
+
+
+req.getHear('content-type')
+
+/////////////////////////
+moduel.exports = req => {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk;
+  })
+  req.on()
+}
+
+///in order to make the above code into a promise
+module.exports = req => {
+  return new Promise((resolve, reject)=> {
+      let body = '';
+  req.on('data', chunk => {
+    body += chunk;
+  })
+  req.on('end', ()=> {
+    resolve(JSON.pase(body;))
+  })
+  req.on(error)
+
+  })
+}
+
+/////we can then export the module 
+bodyParser(req)
+  .then(body => {})
+  .catch(err=>{})
