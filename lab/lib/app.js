@@ -1,9 +1,12 @@
 
 const { parse } = require('url');
+const bodyParser = require('./bodyParser');
 const {
   getCharacter,
   // getCharacters
 } = require('./rickMorty');
+
+const notes = {};
 
 module.exports = (req, res) => {
   const url = parse(req.url, true);
@@ -18,7 +21,17 @@ module.exports = (req, res) => {
         res.statusCode = 500;
         res.end(`Error ${err}`);
       });
-
-
+  } 
+  else if(req.method === 'POST' && url.pathname.includes('/characters')) {
+    bodyParser(req)
+      .then(({ characterId: id, note }) => {
+        if(notes[id]) {
+          notes[id].push(note);
+        } else {
+          notes[id] = [note];
+        }
+        res.statusCode = 200;
+        res.end();
+      });
   }
 };

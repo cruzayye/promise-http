@@ -6,9 +6,9 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "eslint .",
     "pretest": "npm run lint",
-    "start": "npm run test:watch"
+    "start": "nodemon server.js"
+
   },
   "repository": {
     "type": "git",
