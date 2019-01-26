@@ -2,9 +2,9 @@
 const { parse } = require('url');
 const bodyParser = require('./bodyParser');
 const {
-  getCharacter,
-  // getCharacters
-} = require('./rickMorty');
+  getCharacters,
+  getCharacter
+} = require('./rickMorty.js');
 
 const notes = {};
 
@@ -33,5 +33,18 @@ module.exports = (req, res) => {
         res.statusCode = 200;
         res.end();
       });
+  } else if(req.method === 'GET' && url.pathname.includes('/characters')) {
+    getCharacters()
+      .then(characters => {
+        const character = setCharacters(characters).map(ele => ele);
+        res.setHeader('Content-Type', 'text/html');
+        res.end(`<html><body><ul>${character}</ul></body></html>`);
+      });
   }
+};
+
+const setCharacters = arr => {
+  return arr.map(char => {
+    return `<li> name: ${char.nam}, Status: ${char.status}, Species: ${char.species}</li>`;
+  });
 };

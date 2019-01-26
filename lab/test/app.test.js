@@ -27,4 +27,18 @@ describe('app', () => {
       });
   });
 
+  it.only('returns all character notes', () => {
+    return request(app)
+      .post('/characters')
+      .send({ characterId: 1, note: 'Great character' })
+      .then(() => {
+        return request(app)
+          .get('/chracters/1')
+          .then(res => {
+            console.log('HEYYYY', res.statusType);
+            expect(res.body).toContain('Rick');
+          });
+      });
+  });
+
 });
